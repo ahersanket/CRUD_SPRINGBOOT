@@ -45,7 +45,7 @@ public class EmployeeController
 	}
 
 	//creating put mapping that updates the book detail
-	@PutMapping("/employee")
+	@PutMapping("/employee/{id}")
 	private Employee update(@RequestBody Employee employee)
 	{
 		employeeService.saveOrUpdate(employee);
