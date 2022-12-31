@@ -15,4 +15,8 @@ import java.util.List;
     public void DeleteEmployeebyID( int id);
     public void saveOrUpdate(Employee employee);
     public void delete(int id);
+    public List<Employee> getEmployee();
+    //public List<Employee> getEmployeeNamefromH();
+
+
     }

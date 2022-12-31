@@ -1,5 +1,6 @@
 package com.example.CRUDApplication.serviceImpl;
 
+import com.example.CRUDApplication.exception.ResourceNotFoundException;
 import com.example.CRUDApplication.model.Employee;
 import com.example.CRUDApplication.repo.EmployeeRepo;
 import com.example.CRUDApplication.service.EmployeeService;
@@ -26,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(int id) {
-        return employeeRepo.findById(id).get();
+        return employeeRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Employee","ID",id));
     }
 
     @Override
@@ -40,8 +41,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(int id)
-        {
-            employeeRepo.deleteById(id);
-        }
+    public void delete(int id) {
+        employeeRepo.deleteById(id);
     }
+
+    @Override
+    public List<Employee> getEmployee() {
+        List<Employee> employees = employeeRepo.getEmployee();
+        System.out.println(employees);
+        return employees;
+    }
+}
+   // @Override
+    //public List<Employee> getEmployeeNamefromH() {
+       // List<Employee> employeess = employeeRepo.getEmployeeNamefromH();
+      //  System.out.println(employeess);
+      //  return employeess;
+   // }
+//}
+

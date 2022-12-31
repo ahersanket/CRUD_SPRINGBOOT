@@ -57,4 +57,5 @@ import javax.persistence.Table;
 		private String email;
 		private int age;
 
+
 	}

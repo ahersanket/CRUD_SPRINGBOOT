@@ -5,6 +5,7 @@ import java.util.*;
 import com.example.CRUDApplication.model.Employee;
 import com.example.CRUDApplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,11 +45,23 @@ public class EmployeeController
 		return employee.getId();
 	}
 
-	//creating put mapping that updates the book detail
+
 	@PutMapping("/employee/{id}")
 	private Employee update(@RequestBody Employee employee)
 	{
 		employeeService.saveOrUpdate(employee);
 		return employee;
 	}
+
+	@GetMapping("/employees")
+	private List<Employee> getEmployee()
+	{
+		return employeeService.getEmployee();
+	}
+//	@GetMapping("/employeess/")
+//	public List<Employee> getEmployeeNamefromH()
+//	{
+//		return employeeService. getEmployeeNamefromH();
+//	}
+
 }
